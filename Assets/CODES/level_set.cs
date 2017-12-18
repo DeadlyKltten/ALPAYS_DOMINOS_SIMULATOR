@@ -23,5 +23,9 @@ public class level_set : MonoBehaviour {
     {
         SceneManager.LoadScene("level1");
     }
-    
+    public void BootLev2()
+    {
+        SceneManager.LoadScene("level2");
+    }
+
 }

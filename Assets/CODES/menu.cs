@@ -23,6 +23,7 @@ public class menu : MonoBehaviour {
     public void GameRetry()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        AudioListener.pause = false;
     }
 
     public void GameGoMenu()
