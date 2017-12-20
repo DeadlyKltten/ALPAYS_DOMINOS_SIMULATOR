@@ -4,21 +4,31 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameMenerger : MonoBehaviour {
+    // menu pennals
     public GameObject Panel;
+    public GameObject VICTORY;
+    public GameObject flag;
+    bool GameFin = false;
 
+    // player clollision
     public Rigidbody2D rb;
     bool stopGamee = false;
+    bool stopGamee2 = false;
     bool F_Menu = false;
 
+
+    //sound system
     public AudioClip JumpSound;
+    public AudioClip WinSound;
+    public AudioClip DoodSound;
     AudioSource MySound;
     bool Space_sound = false;
-
     public AudioListener audioListener;
     public List<AudioSource> audioSources;
 
-    public GameObject flag;
-    // Use this for initialization
+    public int one;
+    public int two = 50;
+
     void Awake() {
         MySound = GetComponent<AudioSource>();
 
@@ -27,10 +37,18 @@ public class GameMenerger : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         spacebar();
+        if (rb.position.y < -15F) {
+            
+            if (stopGamee2 == false)
+            {
+                stopGamee2 = true;
+                MySound.PlayOneShot(DoodSound, 1f);
+            }
+        }
         if (rb.position.y < -30F)
         {
             if (stopGamee == false)
-            {
+            {                
                 stopGamee = true;
             }
             Debug.Log("GAME OVER");
@@ -47,6 +65,7 @@ public class GameMenerger : MonoBehaviour {
 
         if (F_Menu == false)
         {
+            
             F_Menu = true;
             Panel.SetActive(!Panel.activeSelf);
             AudioListener.pause = true;
@@ -60,13 +79,9 @@ public class GameMenerger : MonoBehaviour {
         {
             if (Space_sound == false) {
                 MySound.PlayOneShot(JumpSound, 1f);
-
+                
             }
             Space_sound = true;
-        }
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            Space_sound = false;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -74,7 +89,28 @@ public class GameMenerger : MonoBehaviour {
         Debug.Log(collision.collider.tag);
         if (collision.collider.tag == "Flag")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            VICTORYscreen();
+            Debug.Log("Level Done");
+                
         }
+        if (collision.collider.tag == "Ground")
+        {
+            if (Space_sound == true)
+            {
+                Debug.Log("Jump reset");
+                Space_sound = false;
+            }
+        }
+
     }
+    public void VICTORYscreen()
+        {
+        if (GameFin == false) {
+            Space_sound = true;
+            MySound.PlayOneShot(WinSound, 1f);
+            VICTORY.SetActive(!VICTORY.activeSelf);
+            GameFin = true;
+            Space_sound = true;
+        }
+         }
 }

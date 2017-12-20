@@ -34,4 +34,8 @@ public class menu : MonoBehaviour {
     {
         SceneManager.LoadScene("levels");
     }
+    public void nextlevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 }
