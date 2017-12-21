@@ -4,6 +4,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameMenerger : MonoBehaviour {
+    //sound system
+    public List<AudioSource> audioSources;
+    public AudioClip JumpSound;
+    public AudioClip WinSound;
+    public AudioClip DoodSound;
+    public AudioClip PizzaSound;
+    AudioSource MySound;
+    bool Space_sound = false;
+    public AudioListener audioListener;
+    
+
     // menu pennals
     public GameObject Panel;
     public GameObject VICTORY;
@@ -15,19 +26,6 @@ public class GameMenerger : MonoBehaviour {
     bool stopGamee = false;
     bool stopGamee2 = false;
     bool F_Menu = false;
-
-
-    //sound system
-    public AudioClip JumpSound;
-    public AudioClip WinSound;
-    public AudioClip DoodSound;
-    AudioSource MySound;
-    bool Space_sound = false;
-    public AudioListener audioListener;
-    public List<AudioSource> audioSources;
-
-    public int one;
-    public int two = 50;
 
     void Awake() {
         MySound = GetComponent<AudioSource>();
@@ -91,7 +89,7 @@ public class GameMenerger : MonoBehaviour {
         {
             VICTORYscreen();
             Debug.Log("Level Done");
-                
+
         }
         if (collision.collider.tag == "Ground")
         {
@@ -100,8 +98,17 @@ public class GameMenerger : MonoBehaviour {
                 Debug.Log("Jump reset");
                 Space_sound = false;
             }
+            
+            
         }
-
+        if (collision.collider.tag == "Pipe")
+        {
+            if (Space_sound == true)
+            {
+                Debug.Log("Jump reset");
+                Space_sound = false;
+            }
+        }
     }
     public void VICTORYscreen()
         {
@@ -113,4 +120,7 @@ public class GameMenerger : MonoBehaviour {
             Space_sound = true;
         }
          }
+    public void GetPizza() {
+        MySound.PlayOneShot(PizzaSound, 2f);
+    }
 }

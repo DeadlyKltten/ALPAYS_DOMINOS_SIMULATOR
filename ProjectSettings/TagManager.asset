@@ -7,6 +7,9 @@ TagManager:
   - Flag
   - Pipe
   - Ground
+  - Brick
+  - Pizza
+  - QuestionBrick
   layers:
   - Default
   - TransparentFX
@@ -16,10 +19,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - QuestionBrick
+  - Pipe
+  - Background
   - 
   - 
   - 
