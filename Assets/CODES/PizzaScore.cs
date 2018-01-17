@@ -14,7 +14,6 @@ public class PizzaScore : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(score2);
         text.text = "score: " + score2.ToString();
         score = score2;
     }

@@ -43,7 +43,7 @@ public class GameMenerger : MonoBehaviour {
                 MySound.PlayOneShot(DoodSound, 1f);
             }
         }
-        if (rb.position.y < -30F)
+        if (rb.position.y < -40F)
         {
             if (stopGamee == false)
             {                
