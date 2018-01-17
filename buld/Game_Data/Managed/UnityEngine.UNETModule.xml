@@ -321,6 +321,11 @@ WebSocket message fragments are called "frames". A WebSocket host has a buffer t
         <para>Defines global paramters for network library.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.Networking.GlobalConfig.ConnectionReadyForSend">
+      <summary>
+        <para>Defines the callback delegate which you can use to get a notification when a connection is ready to send data.</para>
+      </summary>
+    </member>
     <member name="M:UnityEngine.Networking.GlobalConfig.#ctor">
       <summary>
         <para>Create new global config object.</para>
@@ -354,6 +359,13 @@ WebSocket message fragments are called "frames". A WebSocket host has a buffer t
     <member name="P:UnityEngine.Networking.GlobalConfig.MinTimerTimeout">
       <summary>
         <para>Defines the minimum timeout in milliseconds recognised by the system. The default value is 1 ms.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Networking.GlobalConfig.NetworkEventAvailable">
+      <summary>
+        <para>Defines the callback delegate which you can use to get a notification when the host (defined by hostID) has a network event. The callback is called for all event types except Networking.NetworkEventType.Nothing.
+
+See Also: Networking.NetworkEventType</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Networking.GlobalConfig.ReactorMaximumReceivedMessages">
@@ -1317,6 +1329,18 @@ DisconnectNetworkHost can only be called by the group owner on the relay server.
       <summary>
         <para>Deprecated.</para>
       </summary>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkTransport.NotifyWhenConnectionReadyForSend(System.Int32,System.Int32,System.Int32,System.Byte&amp;)">
+      <summary>
+        <para>This method allows you to specify that notifications callbacks should be called when Unity's networking can send more messages than defined in notificationLevel.</para>
+      </summary>
+      <param name="hostId">Host ID.</param>
+      <param name="connectionId">Connection ID.</param>
+      <param name="notificationLevel">Defines how many free slots in the incoming queue should be available before [GlobalConfig.ConnectionReadyForSend] callback is triggered.</param>
+      <param name="error">Error code.</param>
+      <returns>
+        <para>Result, if false error will show error code.</para>
+      </returns>
     </member>
     <member name="M:UnityEngine.Networking.NetworkTransport.QueueMessageForSending(System.Int32,System.Int32,System.Int32,System.Byte[],System.Int32,System.Byte&amp;)">
       <summary>
