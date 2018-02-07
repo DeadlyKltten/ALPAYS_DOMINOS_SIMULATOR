@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa46deaaca4927649a3761510dcd898e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Pizza: {fileID: 1707981883221104, guid: e2e1501bd412bb24299422c6253acf2f, type: 2}
+  Pizza: {fileID: 1769746782286274, guid: e2e1501bd412bb24299422c6253acf2f, type: 2}
 --- !u!212 &212621277235621596
 SpriteRenderer:
   m_ObjectHideFlags: 1
